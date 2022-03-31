@@ -7,14 +7,16 @@
 
 struct Romanization {
     
-    static let onset: [String] = [
+    /// Romanizations of initial consonants in hangul.
+    static let choseong: [String] = [
         "g", "kk", "n", "d", "tt",
         "r", "m", "b", "pp", "s",
         "ss", "",  "j", "jj", "ch",
         "k", "t", "p", "h"
     ]
     
-    static let nucleus: [String] = [
+    /// Romanizations of medial vowels in hangul.
+    static let jungseong: [String] = [
         "a", "ae", "ya", "yae","eo",
         "e", "yeo", "ye", "o",  "wa",
         "wae", "oe", "yo", "u",  "wo",
@@ -22,7 +24,8 @@ struct Romanization {
         "i"
     ]
     
-    static let coda: [String] = [
+    /// Romanizations of final consonants in hangul.
+    static let jongseong: [String] = [
         "", "g", "k", "gs", "n",
         "nj", "nh", "t", "l", "lg",
         "lm", "lb", "ls", "lt", "lp",
