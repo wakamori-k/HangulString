@@ -21,7 +21,7 @@ extension Character: HangulProtocol {
         }
         
         guard let first = unicodeScalars.first,
-              Unicode.Scalar.hangulSyllableRange ~= first else {
+              Unicode.Scalar.hangulSyllableRange.contains(first) else {
                     return false
         }
         
@@ -38,7 +38,7 @@ extension Character: HangulProtocol {
                           UInt32(0x11A8)...UInt32(0x11C2)]
             
             for (i, value) in unicodeScalars.map({$0.value}).enumerated() {
-                guard ranges[i] ~= value else {
+                guard ranges[i].contains(value) else {
                     return nil
                 }
             }
@@ -49,7 +49,7 @@ extension Character: HangulProtocol {
         // Check hangul syllable or not
         // https://unicode-table.com/en/blocks/hangul-syllables/
         guard let first = self.unicodeScalars.first,
-              Unicode.Scalar.hangulSyllableRange ~= first else {
+              Unicode.Scalar.hangulSyllableRange.contains(first) else {
             return nil
         }
 
