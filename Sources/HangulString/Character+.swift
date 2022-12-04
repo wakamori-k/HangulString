@@ -5,14 +5,7 @@
 //  Created by 若森和昌 on 2022/03/30.
 //
 
-/// A type that can operate a character as hangul.
-protocol HangulProtocol {
-    var isHangulSyllable: Bool { get }
-    var hangulJamos: [Unicode.Scalar]? { get }
-    func romanized() -> String
-}
-
-extension Character: HangulProtocol {
+extension Character {
     
     /// A Boolean value indicating whether this character is a hangul syllable.
     var isHangulSyllable: Bool {
