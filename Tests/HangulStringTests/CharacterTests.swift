@@ -39,31 +39,31 @@ final class CharacterTests: XCTestCase {
     // MARK: - jamos
     func testJamos() {
         // 가
-        XCTAssertEqual(Character("\u{AC00}").jamos, ["\u{1100}", "\u{1161}"])
-        XCTAssertEqual(Character("\u{1100}\u{1161}").jamos, ["\u{1100}", "\u{1161}"])
+        XCTAssertEqual(Character("\u{AC00}").hangulJamos, ["\u{1100}", "\u{1161}"])
+        XCTAssertEqual(Character("\u{1100}\u{1161}").hangulJamos, ["\u{1100}", "\u{1161}"])
         
         // 힣
-        XCTAssertEqual(Character("\u{D7A3}").jamos, ["\u{1112}", "\u{1175}", "\u{11C2}"])
-        XCTAssertEqual(Character("\u{1112}\u{1175}\u{11C2}").jamos, ["\u{1112}", "\u{1175}", "\u{11C2}"])
+        XCTAssertEqual(Character("\u{D7A3}").hangulJamos, ["\u{1112}", "\u{1175}", "\u{11C2}"])
+        XCTAssertEqual(Character("\u{1112}\u{1175}\u{11C2}").hangulJamos, ["\u{1112}", "\u{1175}", "\u{11C2}"])
     }
     
     func testJamos_notHangul() {
-        XCTAssertNil(Character("1").jamos)
-        XCTAssertNil(Character("a").jamos)
-        XCTAssertNil(Character(".").jamos)
-        XCTAssertNil(Character("あ").jamos)
+        XCTAssertNil(Character("1").hangulJamos)
+        XCTAssertNil(Character("a").hangulJamos)
+        XCTAssertNil(Character(".").hangulJamos)
+        XCTAssertNil(Character("あ").hangulJamos)
     }
     
     // MARK: - romanized
     func testRomanized() {
         
         // 가
-        XCTAssertEqual(Character("\u{AC00}").romanized, "ga")
-        XCTAssertEqual(Character("\u{1100}\u{1161}").romanized, "ga")
+        XCTAssertEqual(Character("\u{AC00}").romanized(), "ga")
+        XCTAssertEqual(Character("\u{1100}\u{1161}").romanized(), "ga")
         
         // 힣
-        XCTAssertEqual(Character("\u{D7A3}").romanized, "hih")
-        XCTAssertEqual(Character("\u{1112}\u{1175}\u{11C2}").romanized, "hih")
+        XCTAssertEqual(Character("\u{D7A3}").romanized(), "hih")
+        XCTAssertEqual(Character("\u{1112}\u{1175}\u{11C2}").romanized(), "hih")
 
     }
 

@@ -8,12 +8,13 @@
 /// A type that can operate a character as hangul.
 protocol HangulProtocol {
     var isHangulSyllable: Bool { get }
-    var jamos: [Unicode.Scalar]? { get }
-    var romanized: String { get }
+    var hangulJamos: [Unicode.Scalar]? { get }
+    func romanized() -> String
 }
 
 extension Character: HangulProtocol {
     
+    /// A Boolean value indicating whether this character is a hangul syllable.
     var isHangulSyllable: Bool {
         
         guard unicodeScalars.count == 1 else {
@@ -28,7 +29,7 @@ extension Character: HangulProtocol {
         return true
     }
     
-    var jamos: [Unicode.Scalar]? {
+    var hangulJamos: [Unicode.Scalar]? {
         
         guard self.unicodeScalars.count <= 1 else {
             // Check Hangul Jamo or not
@@ -65,9 +66,12 @@ extension Character: HangulProtocol {
         return jamos.compactMap{ Unicode.Scalar($0) }
     }
     
-    var romanized: String {
+    /// Returns an romanized version of this hangul charactor.
+    ///
+    /// When this character is not hangul, returns the character casted to String.
+    func romanized() -> String {
         
-        guard let jamos = jamos else {
+        guard let jamos = hangulJamos else {
             return String(self)
         }
         
