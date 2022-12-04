@@ -5,6 +5,13 @@ import XCTest
 
 
 final class StringTests: XCTestCase {
+
+    func testRomanized() {
+        XCTAssertEqual("안녕하세요".romanized(), "an nyeong ha se yo")
+        XCTAssertEqual("안녕하세요?".romanized(), "an nyeong ha se yo ?")
+        XCTAssertEqual("안녕하세요.".romanized(), "an nyeong ha se yo .")
+
+    }
     
     func testRomanized_separator() {
         XCTAssertEqual("아".romanized(), "a")

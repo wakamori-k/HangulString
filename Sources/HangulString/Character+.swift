@@ -29,6 +29,13 @@ extension Character: HangulProtocol {
         return true
     }
     
+    /// The hangul character's value represented as a collection of hangul jamos.
+    ///
+    /// Examples of representations as hangul jamo .
+    /// ```
+    /// '아' => ['ㅇ', 'ㅏ']
+    /// '안' => ['ㅇ', 'ㅏ', 'ㄴ']
+    /// ```
     var hangulJamos: [Unicode.Scalar]? {
         
         guard self.unicodeScalars.count <= 1 else {
