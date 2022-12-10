@@ -5,34 +5,51 @@
 //  Created by 若森和昌 on 2022/03/31.
 //
 
+extension [Unicode.Scalar] {
+
+    /// Convert to romans by "Revised Romanization of Korean".
+    ///
+    /// https://www.korean.go.kr/front_eng/roman/roman_01.do
+    /// https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean
+    var hangulRomanized: String {
+        var romanized = ""
+        
+        for i in 0..<count {
+            romanized += romanize(
+                scalar: self[i],
+                next: (i + 1 < count) ? self[i+1] : nil) ?? ""
+        }
+        
+        return romanized
+    }
+    
+    private func romanize(scalar: Unicode.Scalar, next: Unicode.Scalar?) -> String? {
+        let value = Int(scalar.value)
+
+        if 0x1100 <= value && value <= 0x1112 {
+            // 초성(choseong)
+            return Unicode.Scalar.Romanization.choseong[value - 0x1100]
+            
+        } else if 0x1161 <= value && value <= 0x1175 {
+            // 중성 (jungseong)
+            return Unicode.Scalar.Romanization.jungseong[value - 0x1161]
+            
+        } else if 0x11A8 <= value && value <= 0x11C2 {
+            // 종성 (jongseong)
+            return Unicode.Scalar.Romanization.jongseong[value - 0x11A8]
+            
+        }
+        
+        return nil
+    }
+}
+
 extension Unicode.Scalar {
     
     static let hangylSyllableStart: Self = Unicode.Scalar(UInt32(0xAC00))!
     static let hangylSyllableEnd: Self = Unicode.Scalar(UInt32(0xD7AF))!
     static let hangulSyllableRange = hangylSyllableStart...hangylSyllableEnd
     
-    /// Convert to romans by "Revised Romanization of Korean".
-    ///
-    /// https://www.korean.go.kr/front_eng/roman/roman_01.do
-    /// https://en.wikipedia.org/wiki/Revised_Romanization_of_Korean
-    var hangulRomanized: String? {
-        
-        if 0x1100 <= value && value <= 0x1112 {
-            // 초성(choseong)
-            return Romanization.choseong[Int(value) - 0x1100]
-            
-        } else if 0x1161 <= value && value <= 0x1175 {
-            // 중성 (jungseong)
-            return Romanization.jungseong[Int(value) - 0x1161]
-            
-        } else if 0x11A8 <= value && value <= 0x11C2 {
-            // 종성 (jongseong)
-            return Romanization.jongseong[Int(value) - 0x11A8]
-            
-        }
-        
-        return nil
-    }
 }
 
 private extension Unicode.Scalar {

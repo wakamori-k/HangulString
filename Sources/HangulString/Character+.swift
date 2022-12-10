@@ -75,7 +75,7 @@ extension Character {
             return String(self)
         }
         
-        return jamos.map { $0.hangulRomanized ?? "" }.reduce("", +)
+        return jamos.hangulRomanized
     }
 
 }
