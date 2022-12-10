@@ -57,6 +57,35 @@ final class CharacterTests: XCTestCase {
     // MARK: - romanized
     func testRomanized() {
         
+        // vowels
+        XCTAssertEqual(Character("아").romanized(), "a")
+        XCTAssertEqual(Character("야").romanized(), "ya")
+        XCTAssertEqual(Character("어").romanized(), "eo")
+        XCTAssertEqual(Character("여").romanized(), "yeo")
+        XCTAssertEqual(Character("오").romanized(), "o")
+        XCTAssertEqual(Character("요").romanized(), "yo")
+        XCTAssertEqual(Character("우").romanized(), "u")
+        XCTAssertEqual(Character("유").romanized(), "yu")
+        XCTAssertEqual(Character("으").romanized(), "eu")
+        XCTAssertEqual(Character("이").romanized(), "i")
+        
+        // double vowels
+        XCTAssertEqual(Character("애").romanized(), "ae")
+        XCTAssertEqual(Character("얘").romanized(), "yae")
+        XCTAssertEqual(Character("에").romanized(), "e")
+        XCTAssertEqual(Character("예").romanized(), "ye")
+        XCTAssertEqual(Character("와").romanized(), "wa")
+        XCTAssertEqual(Character("왜").romanized(), "wae")
+        XCTAssertEqual(Character("외").romanized(), "oe")
+        XCTAssertEqual(Character("워").romanized(), "wo")
+        XCTAssertEqual(Character("웨").romanized(), "we")
+        XCTAssertEqual(Character("위").romanized(), "wi")
+        XCTAssertEqual(Character("의").romanized(), "ui")
+
+    }
+    
+    func testRomanized_detail() {
+        
         // 가
         XCTAssertEqual(Character("\u{AC00}").romanized(), "ga")
         XCTAssertEqual(Character("\u{1100}\u{1161}").romanized(), "ga")
