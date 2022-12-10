@@ -75,26 +75,7 @@ extension Character {
             return String(self)
         }
         
-        var romanized = ""
-        if jamos.count > 0 {
-            romanized.append(
-                Romanization.choseong[Int(jamos[0].value) - 0x1100]
-            )
-        }
-        
-        if jamos.count > 1 {
-            romanized.append(
-                Romanization.jungseong[Int(jamos[1].value) - 0x1161]
-            )
-        }
-        
-        if jamos.count > 2 {
-            romanized.append(
-                Romanization.jongseong[Int(jamos[2].value) - 0x11A7]
-            )
-        }
-        
-        return romanized
+        return jamos.map { $0.hangulRomanized ?? "" }.reduce("", +)
     }
 
 }
