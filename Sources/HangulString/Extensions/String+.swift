@@ -22,7 +22,7 @@ extension String {
                 result += subString
             }
         }
-        
+
         return result
     }
 
@@ -38,18 +38,18 @@ extension String {
                 result += subString
             }
         }
-        
+
         return result
     }
-    
+
     /// Split `text` into an array of strings containing hangul and non-hangul parts respectively.
     /// - Parameter text: A string to split
     /// - Returns: An array of strings containing hangul and non-hangul parts respectively.
     private func split(text: String) -> [String] {
         var result: [String] = []
         var currentString = ""
-        var isLastCharHangul: Bool? = nil
-        
+        var isLastCharHangul: Bool?
+
         for char in text {
             let isHangul = char.isHangulJamos || char.isHangulSyllable
             if let isLastCharHangul = isLastCharHangul, isHangul != isLastCharHangul {
@@ -60,7 +60,7 @@ extension String {
             currentString.append(char)
             isLastCharHangul = isHangul
         }
-        
+
         result.append(currentString)
         return result
     }

@@ -36,7 +36,7 @@ final class StringTests: XCTestCase {
         XCTAssertEqual("abc".romanized(), "abc")
         XCTAssertEqual("#!?".romanized(), "#!?")
     }
-    
+
     func testKatakanized() {
         XCTAssertEqual("안녕하세요".katakanize(), "アンニョンハセヨ")
 
