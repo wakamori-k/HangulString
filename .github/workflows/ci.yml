@@ -7,13 +7,9 @@ concurrency:
   cancel-in-progress: true
 jobs:
   test:
-    # Use Ubuntu 22.04 due to https://github.com/swift-actions/setup-swift/issues/677
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     steps:
-      - uses: swift-actions/setup-swift@v2
-        with:
-          swift-version: "5.9"
       - uses: actions/checkout@v4
       - name: Build
         run: swift build
