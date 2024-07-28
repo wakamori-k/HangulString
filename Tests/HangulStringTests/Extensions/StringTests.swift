@@ -36,5 +36,26 @@ final class StringTests: XCTestCase {
         XCTAssertEqual("abc".romanized(), "abc")
         XCTAssertEqual("#!?".romanized(), "#!?")
     }
+    
+    func testKatakanized() {
+        XCTAssertEqual("안녕하세요".katakanize(), "アンニョンハセヨ")
+
+        XCTAssertEqual("안녕하세요?".katakanize(), "アンニョンハセヨ?")
+        XCTAssertEqual("안녕하세요.".katakanize(), "アンニョンハセヨ.")
+
+        XCTAssertEqual("좋은 하루 보내세요".katakanize(), "チョッウン ハル ポネセヨ")
+        XCTAssertEqual("안녕히 계세요".katakanize(), "アンニョンヒ ケセヨ")
+        XCTAssertEqual("잘 지냈어요?".katakanize(), "チャ(ル) チネッオヨ?")
+    }
+
+    func testKatakanized_nonHangul() {
+        XCTAssertEqual("あ".katakanize(), "あ")
+        XCTAssertEqual("a".katakanize(), "a")
+        XCTAssertEqual("#".katakanize(), "#")
+
+        XCTAssertEqual("あいう".katakanize(), "あいう")
+        XCTAssertEqual("abc".katakanize(), "abc")
+        XCTAssertEqual("#!?".katakanize(), "#!?")
+    }
 
 }

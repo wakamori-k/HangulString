@@ -25,6 +25,22 @@ extension String {
         
         return result
     }
+
+    /// Katakanize given hangul word by following the Revised Romanization of Korean rule.
+    /// - Returns: Katakanized string
+    func katakanize() -> String {
+        let splitted = split(text: self)
+        var result = ""
+        for subString in splitted {
+            if let hangul = try? HangulString(subString), let kana = try? hangul.katakanize() {
+                result += kana
+            } else {
+                result += subString
+            }
+        }
+        
+        return result
+    }
     
     /// Split `text` into an array of strings containing hangul and non-hangul parts respectively.
     /// - Parameter text: A string to split
