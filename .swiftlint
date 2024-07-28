@@ -1,0 +1,8 @@
+disabled_rules:
+  - todo
+identifier_name:
+  min_length: 1
+nesting:
+  type_level: 3
+function_body_length:
+  warning: 60
