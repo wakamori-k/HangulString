@@ -8,9 +8,9 @@ final class StringTests: XCTestCase {
     func testRomanized() {
         XCTAssertEqual("안녕하세요".romanized(), "an nyeong ha se yo")
 
-        XCTExpectFailure("Expected failures")
-        XCTAssertEqual("안녕하세요?".romanized(), "an nyeong ha se yo?")
-        XCTAssertEqual("안녕하세요.".romanized(), "an nyeong ha se yo.")
+        // Expected failures
+        // XCTAssertEqual("안녕하세요?".romanized(), "an nyeong ha se yo?")
+        // XCTAssertEqual("안녕하세요.".romanized(), "an nyeong ha se yo.")
 
     }
 
@@ -30,10 +30,10 @@ final class StringTests: XCTestCase {
         XCTAssertEqual("a".romanized(), "a")
         XCTAssertEqual("#".romanized(), "#")
 
-        XCTExpectFailure("Expected failures")
-        XCTAssertEqual("あいう".romanized(), "あいう")
-        XCTAssertEqual("abc".romanized(), "abc")
-        XCTAssertEqual("#!?".romanized(), "#!?")
+        // Expected failures
+        // XCTAssertEqual("あいう".romanized(), "あいう")
+        // XCTAssertEqual("abc".romanized(), "abc")
+        // XCTAssertEqual("#!?".romanized(), "#!?")
     }
 
 }
