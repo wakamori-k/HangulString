@@ -1,7 +1,7 @@
 import Foundation
 
 import XCTest
-@testable import HangulString
+import HangulString
 
 final class StringTests: XCTestCase {
 

@@ -12,7 +12,7 @@ extension String {
     /// https://www.korean.go.kr/front_eng/roman/roman_01.do
     /// - Parameter separator: A string to be used as a separator
     /// - Returns: Romanized string
-    func romanized(separator: String = " ") -> String {
+    public func romanized(separator: String = " ") -> String {
         let splitted = split(text: self)
         var result = ""
         for subString in splitted {
@@ -28,7 +28,7 @@ extension String {
 
     /// Katakanize given hangul word by following the Revised Romanization of Korean rule.
     /// - Returns: Katakanized string
-    func katakanize() -> String {
+    public func katakanize() -> String {
         let splitted = split(text: self)
         var result = ""
         for subString in splitted {
